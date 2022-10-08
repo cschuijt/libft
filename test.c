@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 21:29:42 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 22:57:49 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ MunitResult	ft_substr_test(const MunitParameter params[], void *data)
 	munit_assert_string_equal(ft_substr("asdfghj qwer", 8, 3), "qwe");
 	munit_assert_string_equal(ft_substr("asdfghj qwer", 11, 3), "r");
 	munit_assert_string_equal(ft_substr("asdfghj qwer", 6, 12), "j qwer");
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
+{
+	munit_assert_string_equal(ft_itoa(1), "1");
+	munit_assert_string_equal(ft_itoa(2147483647), "2147483647");
+	munit_assert_string_equal(ft_itoa(5000), "5000");
+	munit_assert_string_equal(ft_itoa(-44), "-44");
+	munit_assert_string_equal(ft_itoa(-6000), "-6000");
+	munit_assert_string_equal(ft_itoa(-2147483648), "-2147483648");
+	munit_assert_string_equal(ft_itoa(0), "0");
 	return (MUNIT_OK);
 }
 
@@ -201,6 +213,14 @@ MunitTest tests[] = {
 {
 	"/ft_isprint",
 	ft_isprint_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_itoa",
+	ft_itoa_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
