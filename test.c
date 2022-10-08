@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 22:57:49 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 00:09:14 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,25 @@ MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
 	munit_assert_string_equal(ft_itoa(-6000), "-6000");
 	munit_assert_string_equal(ft_itoa(-2147483648), "-2147483648");
 	munit_assert_string_equal(ft_itoa(0), "0");
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_strchr_test(const MunitParameter params[], void *data)
+{
+	char	*str;
+
+	str = "Hello world! This is a very long str1ng w1th funny cha\nracters.\0z";
+	munit_assert_ptr_equal(strchr(str, 'w'), ft_strchr(str, 'w'));
+	munit_assert_ptr_equal(strchr(str, 'e'), ft_strchr(str, 'e'));
+	munit_assert_ptr_equal(strchr(str, 'H'), ft_strchr(str, 'H'));
+	munit_assert_ptr_equal(strchr(str, 'h'), ft_strchr(str, 'h'));
+	munit_assert_ptr_equal(strchr(str, '!'), ft_strchr(str, '!'));
+	munit_assert_ptr_equal(strchr(str, '1'), ft_strchr(str, '1'));
+	munit_assert_ptr_equal(strchr(str, '.'), ft_strchr(str, '.'));
+	munit_assert_ptr_equal(strchr(str, '\0'), ft_strchr(str, '\0'));
+	munit_assert_ptr_equal(strchr(str, 'x'), ft_strchr(str, 'x'));
+	munit_assert_ptr_equal(strchr(str, '\n'), ft_strchr(str, '\n'));
+	munit_assert_ptr_equal(strchr(str, 'z'), ft_strchr(str, 'z'));
 	return (MUNIT_OK);
 }
 
@@ -221,6 +240,14 @@ MunitTest tests[] = {
 {
 	"/ft_itoa",
 	ft_itoa_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strchr",
+	ft_strchr_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
