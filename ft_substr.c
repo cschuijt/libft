@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 13:54:42 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 16:08:17 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 21:30:07 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	total_length = ft_strlen(s);
-	while (start > 0 && s)
+	while (start > 0 && *s)
 	{
 		s++;
 		start--;
