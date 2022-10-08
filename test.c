@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 20:34:09 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 21:06:50 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,35 @@
 
 MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 {
-	munit_assert_int(ft_atoi("0"), ==, atoi("0"));
-	munit_assert_int(ft_atoi("-5"), ==, atoi("-5"));
-	munit_assert_int(ft_atoi("-----10"), ==, atoi("-----10"));
-	munit_assert_int(ft_atoi("----805"), ==, atoi("----805"));
-	munit_assert_int(ft_atoi("1001   23432"), ==, atoi("1001   23432"));
-	munit_assert_int(ft_atoi(""), ==, atoi(""));
-	munit_assert_int(ft_atoi("2147483647"), ==, atoi("2147483647"));
-	munit_assert_int(ft_atoi("-2147483648"), ==, atoi("-2147483648"));
-	munit_assert_int(ft_atoi("    \n666"), ==, atoi("    \n666"));
-	munit_assert_int(ft_atoi("fjkdffd444"), ==, atoi("fjkdffd444"));
-	munit_assert_int(ft_atoi("   54.gkrrgkr"), ==, atoi("   54.gkrrgkr"));
-	munit_assert_int(ft_atoi("+-+--+46"), ==, atoi("+-+--+46"));
-	munit_assert_int(ft_atoi("+46"), ==, atoi("+46"));
-	munit_assert_int(ft_atoi("asdf"), ==, atoi("asdf"));
-	munit_assert_int(ft_atoi("8f7d2kx7"), ==, atoi("8f7d2kx7"));
-	munit_assert_int(ft_atoi("-"), ==, atoi("-"));
-	munit_assert_int(ft_atoi("+"), ==, atoi("+"));
+	munit_assert_int(atoi("0"), ==, ft_atoi("0"));
+	munit_assert_int(atoi("-5"), ==, ft_atoi("-5"));
+	munit_assert_int(atoi("-----10"), ==, ft_atoi("-----10"));
+	munit_assert_int(atoi("----805"), ==, ft_atoi("----805"));
+	munit_assert_int(atoi("1001   23432"), ==, ft_atoi("1001   23432"));
+	munit_assert_int(atoi(""), ==, ft_atoi(""));
+	munit_assert_int(atoi("2147483647"), ==, ft_atoi("2147483647"));
+	munit_assert_int(atoi("-2147483648"), ==, ft_atoi("-2147483648"));
+	munit_assert_int(atoi("    \n666"), ==, ft_atoi("    \n666"));
+	munit_assert_int(atoi("fjkdffd444"), ==, ft_atoi("fjkdffd444"));
+	munit_assert_int(atoi("   54.gkrrgkr"), ==, ft_atoi("   54.gkrrgkr"));
+	munit_assert_int(atoi("+-+--+46"), ==, ft_atoi("+-+--+46"));
+	munit_assert_int(atoi("+46"), ==, ft_atoi("+46"));
+	munit_assert_int(atoi("asdf"), ==, ft_atoi("asdf"));
+	munit_assert_int(atoi("8f7d2kx7"), ==, ft_atoi("8f7d2kx7"));
+	munit_assert_int(atoi("-"), ==, ft_atoi("-"));
+	munit_assert_int(atoi("+"), ==, ft_atoi("+"));
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_strlen_test(const MunitParameter params[], void *data)
+{
+	munit_assert_int(strlen("asdf"), ==, ft_strlen("asdf"));
+	munit_assert_int(strlen("   "), ==, ft_strlen("   "));
+	munit_assert_int(strlen(""), ==, ft_strlen(""));
+	munit_assert_int(strlen("asd\nfds"), ==, ft_strlen("asd\nfds"));
+	munit_assert_int(strlen("1234567890"), ==, ft_strlen("1234567890"));
+	munit_assert_int(strlen("a slightly longer string of words"), ==, ft_strlen("a slightly longer string of words"));
+	munit_assert_int(strlen("asdf\0a1234"), ==, ft_strlen("asdf\0a1234"));
 	return (MUNIT_OK);
 }
 
@@ -102,6 +114,32 @@ MunitResult	ft_isprint_test(const MunitParameter params[], void *data)
 	return (MUNIT_OK);
 }
 
+MunitResult	ft_tolower_test(const MunitParameter params[], void *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 128)
+	{
+		munit_assert_char(tolower(i), ==, ft_tolower(i));
+		i++;
+	}
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_toupper_test(const MunitParameter params[], void *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 128)
+	{
+		munit_assert_char(toupper(i), ==, ft_toupper(i));
+		i++;
+	}
+	return (MUNIT_OK);
+}
+
 MunitTest tests[] = {
 {
 	"/ft_atoi",
@@ -146,6 +184,30 @@ MunitTest tests[] = {
 {
 	"/ft_isprint",
 	ft_isprint_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlen",
+	ft_strlen_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_tolower",
+	ft_tolower_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_toupper",
+	ft_toupper_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
