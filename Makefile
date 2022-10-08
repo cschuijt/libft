@@ -1,6 +1,6 @@
 objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
-					ft_isprint.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o\
-					ft_itoa.o
+					ft_isprint.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o \
+					ft_itoa.o ft_strchr.o
 flags = -Werror -Wall -Wextra
 NAME = libft
 
@@ -47,6 +47,9 @@ ft_isprint.o : ft_isprint.c
 
 ft_itoa.o : ft_itoa.c
 	cc $(flags) -c ft_itoa.c
+
+ft_strchr.o : ft_strchr.c
+	cc $(flags) -c ft_strchr.c
 
 ft_strlen.o : ft_strlen.c
 	cc $(flags) -c ft_strlen.c
