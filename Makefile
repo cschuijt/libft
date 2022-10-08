@@ -19,8 +19,8 @@ fclean :
 	rm -f $(NAME).a $(objects)
 
 test : re
-	cc test/munit.c test/test.c -o test/test
-	test/test
+	cc munit.c test.c -L . -l ft -o test
+	./test
 
 norm :
 	norminette ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
