@@ -6,13 +6,14 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 21:06:50 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 21:29:42 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "munit.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stddef.h>
 #include <ctype.h>
 
 MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
@@ -46,6 +47,22 @@ MunitResult	ft_strlen_test(const MunitParameter params[], void *data)
 	munit_assert_int(strlen("1234567890"), ==, ft_strlen("1234567890"));
 	munit_assert_int(strlen("a slightly longer string of words"), ==, ft_strlen("a slightly longer string of words"));
 	munit_assert_int(strlen("asdf\0a1234"), ==, ft_strlen("asdf\0a1234"));
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_substr_test(const MunitParameter params[], void *data)
+{
+	munit_assert_string_equal(ft_substr("asdfghj", 0, 3), "asd");
+	munit_assert_string_equal(ft_substr("asdfghj", 0, 20), "asdfghj");
+	munit_assert_string_equal(ft_substr("", 0, 3), "");
+	munit_assert_string_equal(ft_substr("", 0, 0), "");
+	munit_assert_string_equal(ft_substr("asdf", 0, 0), "");
+	munit_assert_string_equal(ft_substr("asdf", -5, -3), "");
+	munit_assert_string_equal(ft_substr("asdf\0fdsa", 0, 6), "asdf");
+	munit_assert_string_equal(ft_substr("a\r \ndfghj", 0, 5), "a\r \nd");
+	munit_assert_string_equal(ft_substr("asdfghj qwer", 8, 3), "qwe");
+	munit_assert_string_equal(ft_substr("asdfghj qwer", 11, 3), "r");
+	munit_assert_string_equal(ft_substr("asdfghj qwer", 6, 12), "j qwer");
 	return (MUNIT_OK);
 }
 
@@ -192,6 +209,14 @@ MunitTest tests[] = {
 {
 	"/ft_strlen",
 	ft_strlen_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_substr",
+	ft_substr_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
