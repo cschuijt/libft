@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 12:25:38 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 14:06:45 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 19:42:52 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(char *str)
 	minuses = 0;
 	while (*str && ft_isspace(*str))
 		str++;
-	while (*str && (*str == '+' || *str == '-'))
+	if (*str && (*str == '+' || *str == '-'))
 	{
 		if (*str == '-')
 			minuses++;
@@ -44,7 +44,7 @@ int	ft_atoi(char *str)
 		i = i + (*str - 48);
 		str++;
 	}
-	if (minuses % 2)
+	if (minuses > 0)
 		i = i * -1;
 	return ((int) i);
 }
