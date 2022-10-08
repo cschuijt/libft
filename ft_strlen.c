@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 16:37:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 16:08:11 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 20:57:27 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(const char *s)
 	unsigned int	count;
 
 	count = 0;
-	while (s)
+	while (*s)
 	{
 		count++;
 		s++;
