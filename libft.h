@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 16:44:15 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 21:07:12 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/08 21:38:16 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_itoa(int n);
 #endif
