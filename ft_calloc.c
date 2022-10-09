@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_calloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/09 11:55:22 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 21:35:37 by cschuijt      ########   odam.nl         */
+/*   Created: 2022/10/09 21:07:47 by cschuijt      #+#    #+#                 */
+/*   Updated: 2022/10/09 21:22:01 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <stdlib.h>
+#include <limits.h>
 
-int	ft_strlen(const char *s);
+void	ft_bzero(void *s, size_t n);
 
-char	*ft_strdup(const char *s)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int		len;
-	char	*s2;
-	int		i;
+	void	*pnt;
+	size_t	totalsize;
+	size_t	maxsize;
 
-	len = ft_strlen(s);
-	s2 = malloc(sizeof(char) * (len + 1));
-	if (!s2)
+	maxsize = -1;
+	if (nmemb == 0 || size == 0 || (maxsize / nmemb) < size)
 		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		s2[i] = s[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
+	totalsize = nmemb * size;
+	pnt = malloc(totalsize);
+	if (!pnt)
+		return (NULL);
+	ft_bzero(pnt, totalsize);
+	return (pnt);
 }

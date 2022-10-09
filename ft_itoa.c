@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 21:37:13 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/08 23:03:09 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 21:34:46 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	*ft_itoa(int n)
 	else
 		i = n;
 	str = malloc(sizeof(char) * 12);
+	if (!str)
+		return (NULL);
 	str = str + 11;
 	*str = '\0';
 	str--;
