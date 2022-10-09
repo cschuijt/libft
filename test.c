@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 16:11:03 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 17:19:04 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,23 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+
+// For future use, to toggle the bonus part on or off
+#if !defined(TEST_BONUS)
+# define TEST_BONUS FALSE
+#endif
+
+// Normalization function for *cmp function returns, whether these return
+// -1/0/1 or larger numbers is implementation specific so we'll accept
+// anything along those lines from both stdlib and libft
+int	ft_norm(int i)
+{
+	if (i > 0)
+		return (1);
+	if (i < 0)
+		return (-1);
+	return (0);
+}
 
 MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 {
@@ -36,7 +53,10 @@ MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 	munit_assert_int(atoi("asdf"), ==, ft_atoi("asdf"));
 	munit_assert_int(atoi("8f7d2kx7"), ==, ft_atoi("8f7d2kx7"));
 	munit_assert_int(atoi("-"), ==, ft_atoi("-"));
+	munit_assert_int(atoi("-0"), ==, ft_atoi("-0"));
 	munit_assert_int(atoi("+"), ==, ft_atoi("+"));
+	munit_assert_int(atoi("+0"), ==, ft_atoi("+0"));
+	munit_assert_int(atoi("4--"), ==, ft_atoi("4--"));
 	return (MUNIT_OK);
 }
 
@@ -248,7 +268,14 @@ MunitResult	ft_memchr_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_memcmp_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	munit_assert_int(ft_norm(memcmp("asdf", "asdf", 3)), ==, ft_norm(ft_memcmp("asdf", "asdf", 3)));
+	munit_assert_int(ft_norm(memcmp("asdF", "asdf", 3)), ==, ft_norm(ft_memcmp("asdF", "asdf", 3)));
+	munit_assert_int(ft_norm(memcmp("asdF", "asdf", 4)), ==, ft_norm(ft_memcmp("asdF", "asdf", 4)));
+	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
+	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
+	munit_assert_int(ft_norm(memcmp("", "", 0)), ==, ft_norm(ft_memcmp("", "", 0)));
+	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_strnstr_test(const MunitParameter params[], void *data)
