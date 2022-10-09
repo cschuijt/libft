@@ -1,6 +1,6 @@
 objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_isprint.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o \
-					ft_itoa.o ft_strchr.o ft_strrchr.o ft_strdup.o
+					ft_itoa.o ft_strchr.o ft_strrchr.o ft_strdup.o ft_memset.o
 flags = -Werror -Wall -Wextra
 NAME = libft
 
@@ -48,6 +48,9 @@ ft_isprint.o : ft_isprint.c
 
 ft_itoa.o : ft_itoa.c
 	cc $(flags) -c ft_itoa.c
+
+ft_memset.o : ft_memset.c
+	cc $(flags) -c ft_memset.c
 
 ft_strchr.o : ft_strchr.c
 	cc $(flags) -c ft_strchr.c
