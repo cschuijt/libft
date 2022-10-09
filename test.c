@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 00:09:14 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 11:42:40 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
 MunitResult	ft_strchr_test(const MunitParameter params[], void *data)
 {
 	char	*str;
+	char	*emptystr;
 
 	str = "Hello world! This is a very long str1ng w1th funny cha\nracters.\0z";
+	emptystr = "";
 	munit_assert_ptr_equal(strchr(str, 'w'), ft_strchr(str, 'w'));
 	munit_assert_ptr_equal(strchr(str, 'e'), ft_strchr(str, 'e'));
 	munit_assert_ptr_equal(strchr(str, 'H'), ft_strchr(str, 'H'));
@@ -94,6 +96,31 @@ MunitResult	ft_strchr_test(const MunitParameter params[], void *data)
 	munit_assert_ptr_equal(strchr(str, 'x'), ft_strchr(str, 'x'));
 	munit_assert_ptr_equal(strchr(str, '\n'), ft_strchr(str, '\n'));
 	munit_assert_ptr_equal(strchr(str, 'z'), ft_strchr(str, 'z'));
+	munit_assert_ptr_equal(strchr(emptystr, 'z'), ft_strchr(emptystr, 'z'));
+	munit_assert_ptr_equal(strchr(emptystr, '\0'), ft_strchr(emptystr, '\0'));
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_strrchr_test(const MunitParameter params[], void *data)
+{
+	char	*str;
+	char	*emptystr;
+
+	str = "Hello world! This is a very long str1ng w1th funny cha\nracters.\0z";
+	emptystr = "";
+	munit_assert_ptr_equal(strrchr(str, 'w'), ft_strrchr(str, 'w'));
+	munit_assert_ptr_equal(strrchr(str, 'e'), ft_strrchr(str, 'e'));
+	munit_assert_ptr_equal(strrchr(str, 'H'), ft_strrchr(str, 'H'));
+	munit_assert_ptr_equal(strrchr(str, 'h'), ft_strrchr(str, 'h'));
+	munit_assert_ptr_equal(strrchr(str, '!'), ft_strrchr(str, '!'));
+	munit_assert_ptr_equal(strrchr(str, '1'), ft_strrchr(str, '1'));
+	munit_assert_ptr_equal(strrchr(str, '.'), ft_strrchr(str, '.'));
+	munit_assert_ptr_equal(strrchr(str, '\0'), ft_strrchr(str, '\0'));
+	munit_assert_ptr_equal(strrchr(str, 'x'), ft_strrchr(str, 'x'));
+	munit_assert_ptr_equal(strrchr(str, '\n'), ft_strrchr(str, '\n'));
+	munit_assert_ptr_equal(strrchr(str, 'z'), ft_strrchr(str, 'z'));
+	munit_assert_ptr_equal(strrchr(emptystr, 'z'), ft_strrchr(emptystr, 'z'));
+	munit_assert_ptr_equal(strrchr(emptystr, '\0'), ft_strrchr(emptystr, '\0'));
 	return (MUNIT_OK);
 }
 
@@ -248,6 +275,14 @@ MunitTest tests[] = {
 {
 	"/ft_strchr",
 	ft_strchr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strrchr",
+	ft_strrchr_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
