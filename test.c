@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 20:30:30 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 21:06:14 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -493,7 +493,7 @@ MunitResult	ft_toupper_test(const MunitParameter params[], void *data)
 	return (MUNIT_OK);
 }
 
-MunitTest tests[] = {
+MunitTest part1_tests[] = {
 {
 	"/ft_atoi",
 	ft_atoi_test,
@@ -559,14 +559,6 @@ MunitTest tests[] = {
 	NULL
 },
 {
-	"/ft_itoa",
-	ft_itoa_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
 	"/ft_memchr",
 	ft_memchr_test,
 	NULL,
@@ -601,6 +593,100 @@ MunitTest tests[] = {
 {
 	"/ft_memset",
 	ft_memset_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strchr",
+	ft_strchr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strdup",
+	ft_strdup_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlcat",
+	ft_strlcat_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlcpy",
+	ft_strlcpy_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlen",
+	ft_strlen_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strncmp",
+	ft_strncmp_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strnstr",
+	ft_strnstr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strrchr",
+	ft_strrchr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_tolower",
+	ft_tolower_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_toupper",
+	ft_toupper_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL
+}
+};
+
+MunitTest part2_tests[] = {
+{
+	"/ft_itoa",
+	ft_itoa_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
@@ -647,22 +733,6 @@ MunitTest tests[] = {
 	NULL
 },
 {
-	"/ft_strchr",
-	ft_strchr_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strdup",
-	ft_strdup_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
 	"/ft_striteri",
 	ft_striteri_test,
 	NULL,
@@ -679,56 +749,8 @@ MunitTest tests[] = {
 	NULL
 },
 {
-	"/ft_strlcat",
-	ft_strlcat_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strlcpy",
-	ft_strlcpy_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strlen",
-	ft_strlen_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
 	"/ft_strmapi",
 	ft_strmapi_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strncmp",
-	ft_strncmp_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strnstr",
-	ft_strnstr_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_strrchr",
-	ft_strrchr_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
@@ -751,30 +773,25 @@ MunitTest tests[] = {
 	NULL
 },
 {
-	"/ft_tolower",
-	ft_tolower_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
-	"/ft_toupper",
-	ft_toupper_test,
-	NULL,
-	NULL,
-	MUNIT_TEST_OPTION_NONE,
-	NULL
-},
-{
 	NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL
 }
 };
 
+MunitTest bonus_tests[] = {
+// Sometime soon?
+};
+
+static MunitSuite test_suites[] = {
+	{ "/part-1", part1_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE },
+	{ "/part-2", part2_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE },
+	{ "/bonus", bonus_tests, NULL, 1, MUNIT_SUITE_OPTION_NONE },
+	{ NULL, NULL, NULL, 0, MUNIT_SUITE_OPTION_NONE }
+};
+
 static const MunitSuite suite = {
 	"/libft",
-	tests,
 	NULL,
+	test_suites,
 	1,
 	MUNIT_SUITE_OPTION_NONE
 };
