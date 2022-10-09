@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 15:08:57 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 15:23:31 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,12 +170,37 @@ MunitResult	ft_memset_test(const MunitParameter params[], void *data)
 	munit_assert_memory_equal(20, str1, str2);
 	munit_assert_ptr_equal(pnt1, str1);
 	munit_assert_ptr_equal(pnt2, str2);
+	free(str1);
+	free(str2);
 	return (MUNIT_OK);
 }
 
 MunitResult	ft_bzero_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str1, *str2;
+
+	str1 = malloc(sizeof(char) * 30);
+	str2 = malloc(sizeof(char) * 30);
+	memset(str1, 80, 22);
+	memset(str2, 80, 22);
+	bzero(str1, 0);
+	ft_bzero(str2, 0);
+	munit_assert_memory_equal(20, str1, str2);
+	bzero(str1, 8);
+	ft_bzero(str2, 8);
+	munit_assert_memory_equal(8, str1, str2);
+	bzero(str1, 3);
+	ft_bzero(str2, 3);
+	munit_assert_memory_equal(20, str1, str2);
+	bzero(str1 + 10, 5);
+	ft_bzero(str2 + 10, 5);
+	munit_assert_memory_equal(20, str1, str2);
+	bzero(str1, 20);
+	ft_bzero(str2, 20);
+	munit_assert_memory_equal(20, str1, str2);
+	free(str1);
+	free(str2);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_memcpy_test(const MunitParameter params[], void *data)
