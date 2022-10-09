@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 15:23:31 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 16:11:03 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 
 MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 {
@@ -230,7 +231,19 @@ MunitResult	ft_strncmp_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_memchr_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str;
+
+	str = "Hello world! This is a funny string w1th lots of 1nteresti\ng char\0acters.";
+	munit_assert_ptr_equal(memchr(str, 'o', 10), ft_memchr(str, 'o', 10));
+	munit_assert_ptr_equal(memchr(str, 'y', 10), ft_memchr(str, 'y', 10));
+	munit_assert_ptr_equal(memchr(str, '\n', 10), ft_memchr(str, '\n', 10));
+	munit_assert_ptr_equal(memchr(str, '\n', 70), ft_memchr(str, '\n', 70));
+	munit_assert_ptr_equal(memchr(str, '.', 60), ft_memchr(str, '.', 60));
+	munit_assert_ptr_equal(memchr(str, '.', 73), ft_memchr(str, '.', 73));
+	munit_assert_ptr_equal(memchr(str, '!', 73), ft_memchr(str, '!', 73));
+	munit_assert_ptr_equal(memchr(str, 32, 73), ft_memchr(str, 32, 73));
+	munit_assert_ptr_equal(memchr(str, 'H', 0), ft_memchr(str, 'H', 0));
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_memcmp_test(const MunitParameter params[], void *data)
