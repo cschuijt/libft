@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 17:19:04 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 20:30:30 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,12 +226,81 @@ MunitResult	ft_bzero_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_memcpy_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str, *str2, *pnt1, *pnt2;
+	int		i;
+
+	i = 0;
+	str = malloc(sizeof(char) * 30);
+	str2 = malloc(sizeof(char) * 30);
+	while (i < 30)
+	{
+		str[i] = 94 + i;
+		str2[i] = 94 + i;
+		i++;
+	}
+	munit_assert_memory_equal(30, str, str2);
+	pnt1 = memcpy(str + 10, str, 3);
+	pnt2 = ft_memcpy(str2 + 10, str2, 3);
+	munit_assert_memory_equal(30, str, str2);
+	pnt2 = ft_memcpy(str + 10, str, 3);
+	munit_assert_ptr_equal(pnt1, pnt2);
+	memcpy(str + 20, str + 4, 0);
+	ft_memcpy(str2 + 20, str2 + 4, 0);
+	munit_assert_memory_equal(30, str, str2);
+	memcpy(str + 3, str + 18, 10);
+	ft_memcpy(str2 + 3, str2 + 18, 10);
+	munit_assert_memory_equal(30, str, str2);
+	free(str);
+	free(str2);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_memmove_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str, *str2, *pnt1, *pnt2;
+	int		i;
+
+	i = 0;
+	str = malloc(sizeof(char) * 30);
+	str2 = malloc(sizeof(char) * 30);
+	while (i < 30)
+	{
+		str[i] = 94 + i;
+		str2[i] = 94 + i;
+		i++;
+	}
+	munit_assert_memory_equal(30, str, str2);
+	pnt1 = memmove(str + 10, str, 3);
+	pnt2 = ft_memmove(str2 + 10, str2, 3);
+	munit_assert_memory_equal(30, str, str2);
+	pnt2 = ft_memmove(str + 10, str, 3);
+	munit_assert_ptr_equal(pnt1, pnt2);
+	memmove(str + 20, str + 4, 0);
+	ft_memmove(str2 + 20, str2 + 4, 0);
+	munit_assert_memory_equal(30, str, str2);
+	memmove(str + 3, str + 18, 10);
+	ft_memmove(str2 + 3, str2 + 18, 10);
+	munit_assert_memory_equal(30, str, str2);
+	i = 0;
+	while (i < 30)
+	{
+		str[i] = 94 + i;
+		str2[i] = 94 + i;
+		i++;
+	}
+	munit_assert_memory_equal(30, str, str2);
+	memmove(str, str, 25);
+	ft_memmove(str2, str2, 25);
+	munit_assert_memory_equal(30, str, str2);
+	memmove(str + 8, str, 10);
+	ft_memmove(str2 + 8, str2, 10);
+	munit_assert_memory_equal(30, str, str2);
+	memmove(str + 19, str + 15, 10);
+	ft_memmove(str2 + 19, str2 + 15, 10);
+	munit_assert_memory_equal(30, str, str2);
+	free(str);
+	free(str2);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_strlcpy_test(const MunitParameter params[], void *data)
