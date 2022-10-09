@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 11:42:40 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 12:53:25 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,125 @@ MunitResult	ft_strrchr_test(const MunitParameter params[], void *data)
 	return (MUNIT_OK);
 }
 
+MunitResult	ft_strdup_test(const MunitParameter params[], void *data)
+{
+	char	*str;
+
+	munit_assert_string_equal(strdup("asdf"), ft_strdup("asdf"));
+	munit_assert_string_equal(strdup("tjt\newwer\f123"), ft_strdup("tjt\newwer\f123"));
+	munit_assert_string_equal(strdup("!"), ft_strdup("!"));
+	munit_assert_string_equal(strdup(""), ft_strdup(""));
+	munit_assert_string_equal(strdup("qwe\0rty"), ft_strdup("qwe\0rty"));
+	munit_assert_string_equal(strdup("This is a longer string."), ft_strdup("This is a longer string."));
+	munit_assert_string_equal(strdup("\0"), ft_strdup("\0"));
+
+	munit_assert_string_equal("asdf", ft_strdup("asdf"));
+	// Ensure that ft_strdup isn't just returning a pointer to the original xd
+	str = "hoi";
+	munit_assert_ptr_not_equal(str, ft_strdup(str));
+	return (MUNIT_OK);
+}
+
+MunitResult	ft_memset_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_bzero_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_memcpy_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_memmove_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strlcpy_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strncmp_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_memchr_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_memcmp_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strnstr_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_calloc_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strjoin_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strtrim_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_split_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_strmapi_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_striteri_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_putchar_fd_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_putstr_fd_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_putendl_fd_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
+MunitResult	ft_putnbr_fd_test(const MunitParameter params[], void *data)
+{
+	return (MUNIT_SKIP);
+}
+
 MunitResult	ft_isalnum_test(const MunitParameter params[], void *data)
 {
 	int	i;
@@ -225,6 +344,22 @@ MunitTest tests[] = {
 	NULL
 },
 {
+	"/ft_bzero",
+	ft_bzero_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_calloc",
+	ft_calloc_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
 	"/ft_isalnum",
 	ft_isalnum_test,
 	NULL,
@@ -273,8 +408,160 @@ MunitTest tests[] = {
 	NULL
 },
 {
+	"/ft_memchr",
+	ft_memchr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_memcmp",
+	ft_memcmp_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_memcpy",
+	ft_memcpy_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_memmove",
+	ft_memmove_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_memset",
+	ft_memset_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_putchar_fd",
+	ft_putchar_fd_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_putendl_fd",
+	ft_putendl_fd_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_putnbr_fd",
+	ft_putnbr_fd_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_putstr_fd",
+	ft_putstr_fd_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_split",
+	ft_split_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
 	"/ft_strchr",
 	ft_strchr_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strdup",
+	ft_strdup_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_striteri",
+	ft_striteri_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strjoin",
+	ft_strjoin_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlcat",
+	ft_strlcat_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlcpy",
+	ft_strlcpy_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strlen",
+	ft_strlen_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strmapi",
+	ft_strmapi_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strncmp",
+	ft_strncmp_test,
+	NULL,
+	NULL,
+	MUNIT_TEST_OPTION_NONE,
+	NULL
+},
+{
+	"/ft_strnstr",
+	ft_strnstr_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
@@ -289,8 +576,8 @@ MunitTest tests[] = {
 	NULL
 },
 {
-	"/ft_strlen",
-	ft_strlen_test,
+	"/ft_strtrim",
+	ft_strtrim_test,
 	NULL,
 	NULL,
 	MUNIT_TEST_OPTION_NONE,
