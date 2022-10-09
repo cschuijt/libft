@@ -1,7 +1,7 @@
 objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_isprint.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o \
 					ft_itoa.o ft_strchr.o ft_strrchr.o ft_strdup.o ft_memset.o \
-					ft_bzero.o ft_memchr.o
+					ft_bzero.o ft_memchr.o ft_memcmp.o
 flags = -Werror -Wall -Wextra
 NAME = libft
 
@@ -27,7 +27,8 @@ test : re
 norm :
 	norminette ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	ft_isprint.c ft_strlen.c ft_substr.c ft_tolower.c ft_toupper.c ft_itoa.c \
-	ft_strchr.c ft_strrchr.c ft_strdup.c ft_memset.c ft_bzero.c ft_memchr.c
+	ft_strchr.c ft_strrchr.c ft_strdup.c ft_memset.c ft_bzero.c ft_memchr.c \
+	ft_memcmp.c
 
 ft_atoi.o : ft_atoi.c
 	cc $(flags) -c ft_atoi.c
@@ -55,6 +56,9 @@ ft_itoa.o : ft_itoa.c
 
 ft_memchr.o : ft_memchr.c
 	cc $(flags) -c ft_memchr.c
+
+ft_memcmp.o : ft_memcmp.c
+	cc $(flags) -c ft_memcmp.c
 
 ft_memset.o : ft_memset.c
 	cc $(flags) -c ft_memset.c

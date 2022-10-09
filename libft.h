@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 16:44:15 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 15:44:42 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 16:35:13 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ char	*ft_strdup(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 #endif
