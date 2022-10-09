@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 12:53:25 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 15:08:57 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <ctype.h>
+#include <stdio.h>
 
 MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 {
@@ -145,7 +146,31 @@ MunitResult	ft_strdup_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_memset_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str1, *str2;
+	char	*pnt1, *pnt2;
+
+	str1 = malloc(sizeof(char) * 30);
+	str2 = malloc(sizeof(char) * 30);
+	pnt1 = memset(str1, 49, 8);
+	pnt2 = ft_memset(str2, 49, 8);
+	munit_assert_memory_equal(8, str1, str2);
+	munit_assert_memory_equal(8, pnt1, pnt2);
+	munit_assert_ptr_equal(str2, pnt2);
+	memset(str1, 72, 20);
+	ft_memset(str2, 72, 20);
+	munit_assert_memory_equal(20, str1, str2);
+	memset(str1, 80, 3);
+	ft_memset(str2, 80, 3);
+	munit_assert_memory_equal(20, str1, str2);
+	memset(str1 + 10, 90, 5);
+	ft_memset(str2 + 10, 90, 5);
+	munit_assert_memory_equal(20, str1, str2);
+	pnt1 = memset(str1, 100, 0);
+	pnt2 = ft_memset(str2, 100, 0);
+	munit_assert_memory_equal(20, str1, str2);
+	munit_assert_ptr_equal(pnt1, str1);
+	munit_assert_ptr_equal(pnt2, str2);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_bzero_test(const MunitParameter params[], void *data)
