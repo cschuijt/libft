@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 21:06:14 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/09 21:42:12 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,7 +354,21 @@ MunitResult	ft_strnstr_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_calloc_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	*str1, *str2;
+
+	str1 = calloc(sizeof(char), 20);
+	str2 = ft_calloc(sizeof(char), 20);
+
+	munit_assert_char(str1[5], ==, str2[5]);
+	munit_assert_char(str1[8], ==, 0);
+	munit_assert_memory_equal(20, str1, str2);
+	munit_assert_ptr_equal(
+		calloc(999999999, 999999999),
+		ft_calloc(999999999, 999999999)
+	);
+	free(str1);
+	free(str2);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_strjoin_test(const MunitParameter params[], void *data)
