@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 23:12:16 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 13:12:15 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,7 +297,19 @@ MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_strncmp_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	munit_assert_int(ft_norm(strncmp("asdf", "asdf", 3)), ==, ft_norm(ft_strncmp("asdf", "asdf", 3)));
+	munit_assert_int(ft_norm(strncmp("asdf", "asdf", 5)), ==, ft_norm(ft_strncmp("asdf", "asdf", 5)));
+	munit_assert_int(ft_norm(strncmp("asdf", "asdf", 30)), ==, ft_norm(ft_strncmp("asdf", "asdf", 30)));
+	munit_assert_int(ft_norm(strncmp("asdF", "asdf", 3)), ==, ft_norm(ft_strncmp("asdF", "asdf", 3)));
+	munit_assert_int(ft_norm(strncmp("asdF", "asdf", 4)), ==, ft_norm(ft_strncmp("asdF", "asdf", 4)));
+	munit_assert_int(ft_norm(strncmp("AsdF", "asdf", 0)), ==, ft_norm(ft_strncmp("AsdF", "asdf", 0)));
+	munit_assert_int(ft_norm(strncmp("a\0Df", "asdf", 3)), ==, ft_norm(ft_strncmp("a\0Df", "asdf", 3)));
+	munit_assert_int(ft_norm(strncmp("asdf", "asdfgh", 5)), ==, ft_norm(ft_strncmp("asdf", "asdfgh", 5)));
+	munit_assert_int(ft_norm(strncmp("asdf", "asdfgh", 3)), ==, ft_norm(ft_strncmp("asdf", "asdfgh", 3)));
+	munit_assert_int(ft_norm(strncmp("asdfgh", "asdf", 5)), ==, ft_norm(ft_strncmp("asdfgh", "asdf", 5)));
+	munit_assert_int(ft_norm(strncmp("asdfgh", "asdf", 3)), ==, ft_norm(ft_strncmp("asdfgh", "asdf", 3)));
+	munit_assert_int(ft_norm(strncmp("asd\0gh", "a\0dfgh", 7)), ==, ft_norm(ft_strncmp("asd\0gh", "a\0dfgh", 7)));
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_memchr_test(const MunitParameter params[], void *data)
@@ -320,10 +332,10 @@ MunitResult	ft_memchr_test(const MunitParameter params[], void *data)
 MunitResult	ft_memcmp_test(const MunitParameter params[], void *data)
 {
 	munit_assert_int(ft_norm(memcmp("asdf", "asdf", 3)), ==, ft_norm(ft_memcmp("asdf", "asdf", 3)));
-	munit_assert_int(ft_norm(memcmp("asdF", "asdf", 3)), ==, ft_norm(ft_memcmp("asdF", "asdf", 3)));
-	munit_assert_int(ft_norm(memcmp("asdF", "asdf", 4)), ==, ft_norm(ft_memcmp("asdF", "asdf", 4)));
+	munit_assert_int(ft_norm(memcmp("a\0dF", "a\0df", 3)), ==, ft_norm(ft_memcmp("a\0dF", "a\0df", 3)));
+	munit_assert_int(ft_norm(memcmp("as\0F", "as\0f", 4)), ==, ft_norm(ft_memcmp("as\0F", "as\0f", 4)));
 	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
-	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
+	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 1)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 1)));
 	munit_assert_int(ft_norm(memcmp("", "", 0)), ==, ft_norm(ft_memcmp("", "", 0)));
 	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
 	return (MUNIT_OK);
