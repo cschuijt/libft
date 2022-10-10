@@ -25,6 +25,10 @@ test : re
 	cc munit.c test.c -L . -l ft -o test
 	./test
 
+test-lbsd : re
+	cc munit.c test.c -L . -l ft -o test -lbsd
+	./test
+
 norm :
 	norminette ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	ft_isprint.c ft_strlen.c ft_substr.c ft_tolower.c ft_toupper.c ft_itoa.c \

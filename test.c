@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/10 18:46:01 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 23:16:55 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -353,13 +353,6 @@ MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
 	munit_assert_memory_equal(30, str2, str3);
 	memset(str2, 80, 30);
 	memset(str3, 80, 30);
-	str2[29] = '\0';
-	str3[29] = '\0';
-	munit_assert_int(strlcat(str2, str1, 14), ==, ft_strlcat(str3, str1, 14));
-	munit_assert_string_equal(str2, str3);
-	munit_assert_memory_equal(30, str2, str3);
-	memset(str2, 80, 30);
-	memset(str3, 80, 30);
 	strlcpy(str2, "asdfg", 3);
 	strlcpy(str3, "asdfg", 3);
 	munit_assert_int(strlcat(str2, str1, 19), ==, ft_strlcat(str3, str1, 19));
@@ -377,6 +370,11 @@ MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
 	strlcpy(str2, "asdfg", 6);
 	strlcpy(str3, "asdfg", 6);
 	munit_assert_int(strlcat(str2, str1, 0), ==, ft_strlcat(str3, str1, 0));
+	munit_assert_string_equal(str2, str3);
+	munit_assert_memory_equal(30, str2, str3);
+	memset(str2, 80, 30);
+	memset(str3, 80, 30);
+	munit_assert_int(strlcat(str2, str1, 20), ==, ft_strlcat(str3, str1, 20));
 	munit_assert_string_equal(str2, str3);
 	munit_assert_memory_equal(30, str2, str3);
 	memset(str4, 80, 10);
