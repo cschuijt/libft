@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 13:16:53 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 15:09:44 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 12:09:35 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	{
 		*((char *) pnt) = c;
 		n--;
-		(char *) pnt++;
+		pnt++;
 	}
 	return (s);
 }

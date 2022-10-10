@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 17:59:15 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 18:59:40 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 12:09:25 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	move_rtl(void *dest, const void *src, size_t n)
 	while (n > 0)
 	{
 		*((char *) dest) = *((char *) src);
-		(char *) dest--;
-		(char *) src--;
+		dest--;
+		src--;
 		n--;
 	}
 }
@@ -37,8 +37,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		while (n > 0)
 		{
 			*((char *) dest) = *((char *) src);
-			(char *) dest++;
-			(char *) src++;
+			dest++;
+			src++;
 			n--;
 		}
 	}
