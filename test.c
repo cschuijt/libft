@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/10 13:12:15 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 14:07:20 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ MunitResult	ft_memset_test(const MunitParameter params[], void *data)
 	memset(str1 + 10, 90, 5);
 	ft_memset(str2 + 10, 90, 5);
 	munit_assert_memory_equal(20, str1, str2);
-	pnt1 = memset(str1, 100, 0);
+	pnt1 = memset(str1, 100, (0));
 	pnt2 = ft_memset(str2, 100, 0);
 	munit_assert_memory_equal(20, str1, str2);
 	munit_assert_ptr_equal(pnt1, str1);
@@ -186,7 +186,7 @@ MunitResult	ft_bzero_test(const MunitParameter params[], void *data)
 	str2 = malloc(sizeof(char) * 30);
 	memset(str1, 80, 22);
 	memset(str2, 80, 22);
-	bzero(str1, 0);
+	bzero(str1, (0));
 	ft_bzero(str2, 0);
 	munit_assert_memory_equal(20, str1, str2);
 	bzero(str1, 8);
