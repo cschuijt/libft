@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 14:29:58 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/10 15:02:40 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/10 17:38:58 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	n;
 	size_t	len;
+	size_t	size;
 
+	if (dstsize > 0)
+		size = dstsize - 1;
+	else
+		size = 0;
 	len = ft_strlen(src);
 	n = 0;
-	while (*src && n < dstsize)
+	while (*src && n < size)
 	{
 		*dst = *src;
 		dst++;
