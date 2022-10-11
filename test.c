@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:00:29 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/11 14:02:09 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -457,6 +457,8 @@ MunitResult	ft_strnstr_test(const MunitParameter params[], void *data)
 	munit_assert_ptr_equal(strnstr(str, "of fun", 67), ft_strnstr(str, "of fun", 67));
 	munit_assert_ptr_equal(strnstr(str, "\n", 67), ft_strnstr(str, "\n", 67));
 	munit_assert_ptr_equal(strnstr(str, "a", 70), ft_strnstr(str, "a", 70));
+	munit_assert_ptr_equal(strnstr(str, "lo", 70), ft_strnstr(str, "lo", 70));
+	munit_assert_ptr_equal(strnstr(str, "lotz", 70), ft_strnstr(str, "lotz", 70));
 	munit_assert_ptr_equal(strnstr(str, ".", 30), ft_strnstr(str, ".", 30));
 	munit_assert_ptr_equal(strnstr(str, ".", 70), ft_strnstr(str, ".", 70));
 	return (MUNIT_OK);
