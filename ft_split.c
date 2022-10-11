@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:00:11 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/11 23:49:44 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 00:08:59 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static char	*allocate_substring(char const *s, char c)
 	while (s[len] && s[len] != c)
 		len++;
 	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
 	while (i < len)
 	{
 		str[i] = s[i];
@@ -68,6 +70,8 @@ char	**ft_split(char const *s, char c)
 		if (*s && *s != c)
 		{
 			array[i] = allocate_substring(s, c);
+			if (array[i] == NULL)
+				return (NULL);
 			i++;
 		}
 		while (*s && *s != c)
