@@ -2,7 +2,7 @@ objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_isprint.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o \
 					ft_itoa.o ft_strchr.o ft_strrchr.o ft_strdup.o ft_memset.o \
 					ft_bzero.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o \
-					ft_calloc.o ft_strncmp.o ft_strlcat.o ft_strlcpy.o
+					ft_calloc.o ft_strncmp.o ft_strlcat.o ft_strlcpy.o ft_strnstr.o
 flags = -Werror -Wall -Wextra
 NAME = libft
 
@@ -92,6 +92,9 @@ ft_strcpy.o : ft_strcpy.c
 
 ft_strncmp.o : ft_strncmp.c
 	cc $(flags) -c ft_strncmp.c
+
+ft_strnstr.o : ft_strnstr.c
+	cc $(flags) -c ft_strnstr.c
 
 ft_strrchr.o : ft_strrchr.c
 	cc $(flags) -c ft_strrchr.c
