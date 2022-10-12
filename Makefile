@@ -4,7 +4,7 @@ objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_bzero.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o \
 					ft_calloc.o ft_strncmp.o ft_strlcat.o ft_strlcpy.o ft_strnstr.o \
 					ft_split.o ft_strtrim.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o \
-					ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
+					ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strjoin.o
 flags = -Werror -Wall -Wextra
 NAME = libft
 
@@ -99,8 +99,8 @@ ft_strlcat.o : ft_strlcat.c
 ft_strlen.o : ft_strlen.c
 	cc $(flags) -c ft_strlen.c
 
-ft_strcpy.o : ft_strcpy.c
-	cc $(flags) -c ft_strcpy.c
+ft_strlcpy.o : ft_strlcpy.c
+	cc $(flags) -c ft_strlcpy.c
 
 ft_striteri.o : ft_striteri.c
 	cc $(flags) -c ft_striteri.c

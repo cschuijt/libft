@@ -6,13 +6,13 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 11:28:03 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 11:42:12 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 17:22:01 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strrchr(const char *s, int c)
 {

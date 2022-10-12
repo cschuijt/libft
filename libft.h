@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 16:44:15 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 16:41:11 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 17:21:36 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_isalpha(int c);

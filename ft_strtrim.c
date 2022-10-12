@@ -6,16 +6,16 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:57:53 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 14:24:14 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 17:23:17 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdbool.h>
 
-int		ft_strlen(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	*ft_calloc(size_t nmemb, size_t size);
+size_t		ft_strlen(const char *s);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 static int	ft_is_in_set(char c, char const *set)
 {
@@ -65,7 +65,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	offset_start = ft_match_start(s1, set);
 	offset_end = ft_match_end(s1, set);
-	if ((offset_start + offset_end) >= (size_t) ft_strlen(s1))
+	if ((offset_start + offset_end) >= ft_strlen(s1))
 		return (ft_calloc(sizeof(char), 1));
 	len = ft_strlen(s1) - offset_end - offset_start;
 	return (ft_substr(s1, (unsigned int) offset_start, len));

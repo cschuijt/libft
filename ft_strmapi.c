@@ -6,13 +6,13 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 14:44:09 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 15:06:29 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 17:21:23 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))

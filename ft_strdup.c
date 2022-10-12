@@ -6,13 +6,13 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 11:55:22 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 21:35:37 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 17:21:50 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strdup(const char *s)
 {
