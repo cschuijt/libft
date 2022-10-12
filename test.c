@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 18:36:17 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 18:56:11 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -877,7 +877,7 @@ MunitResult	ft_strmapi_test(const MunitParameter params[], void *data)
 
 	char *str3 = calloc(1, 1);
 	char *str4 = ft_strmapi(str, &ft_toupper_map);
-	munit_assert_string_equal(str4, "");
+	munit_assert_string_equal(str4, "HELLO WORLD! THIS IS A STR1NG THAT CAN BE UPCASED.");
 	free(str);
 	free(str2);
 	free(str3);
