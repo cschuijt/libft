@@ -6,11 +6,13 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:18:19 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 15:40:03 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 16:41:34 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putnbr_fd(int n, int fd);
 
 static void	write_number(int n, int fd)
 {
@@ -28,10 +30,10 @@ static void	write_number(int n, int fd)
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n < 0)
-		write(fd, '-', 1);
+		write(fd, "-", 1);
 	else
 		n = n * -1;
 	if (n == 0)
-		write(fd, '0', 1);
+		write(fd, "0", 1);
 	write_number(n, fd);
 }

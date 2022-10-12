@@ -6,11 +6,13 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:16:37 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 15:17:43 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 16:41:41 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putstr_fd(char *s, int fd);
 
 void	ft_putendl_fd(char *s, int fd)
 {
