@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/11 23:59:51 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/12 18:36:17 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -796,17 +796,36 @@ MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
 	munit_assert_string_equal(ft_itoa(-6000), "-6000");
 	munit_assert_string_equal(ft_itoa(-2147483648), "-2147483648");
 	munit_assert_string_equal(ft_itoa(0), "0");
+	munit_assert_string_equal(ft_itoa(-1), "-1");
 	return (MUNIT_OK);
 }
 
 MunitResult	ft_strjoin_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	munit_assert_string_equal(ft_strjoin("asdf", "fghj"), "asdffghj");
+	munit_assert_string_equal(ft_strjoin("a", "fghj"), "afghj");
+	munit_assert_string_equal(ft_strjoin("asdf", "j"), "asdfj");
+	munit_assert_string_equal(ft_strjoin("asdf", ""), "asdf");
+	munit_assert_string_equal(ft_strjoin("", "fghj"), "fghj");
+	munit_assert_string_equal(ft_strjoin("asdf", "fghj"), "asdffghj");
+	munit_assert_string_equal(ft_strjoin("", ""), "");
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_strtrim_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	munit_assert_string_equal(ft_strtrim("   asdf     ", " "), "asdf");
+	munit_assert_string_equal(ft_strtrim("asdf    ", " "), "asdf");
+	munit_assert_string_equal(ft_strtrim("    asdf", " "), "asdf");
+	munit_assert_string_equal(ft_strtrim("asdf", " "), "asdf");
+	munit_assert_string_equal(ft_strtrim("asdf", ""), "asdf");
+	munit_assert_string_equal(ft_strtrim("", ""), "");
+	munit_assert_string_equal(ft_strtrim("", "asdf"), "");
+	munit_assert_string_equal(ft_strtrim("QWEWQasdfEEEEEWWWWQEEEW", "QWE"), "asdf");
+	munit_assert_string_equal(ft_strtrim("QWEWQaEEEEEWWWWQEEEW", "QWERT"), "a");
+	munit_assert_string_equal(ft_strtrim("EEEEasfdEEEsdfdsEdfEE", "E"), "asfdEEEsdfdsEdf");
+	munit_assert_string_equal(ft_strtrim("aaaaaaaa", "a"), "");
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_split_test(const MunitParameter params[], void *data)
@@ -840,14 +859,49 @@ MunitResult	ft_split_test(const MunitParameter params[], void *data)
 	return (MUNIT_OK);
 }
 
+char	ft_toupper_map(unsigned int i, char c)
+{
+	(void) i;
+	return (ft_toupper(c));
+}
+
 MunitResult	ft_strmapi_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char *str = ft_strdup("Hello world! This is a str1ng that can bE UPCased.");
+	char *str2 = ft_strmapi(str, &ft_toupper_map);
+
+	munit_assert_string_equal(
+		str2,
+		"HELLO WORLD! THIS IS A STR1NG THAT CAN BE UPCASED."
+	);
+
+	char *str3 = calloc(1, 1);
+	char *str4 = ft_strmapi(str, &ft_toupper_map);
+	munit_assert_string_equal(str4, "");
+	free(str);
+	free(str2);
+	free(str3);
+	free(str4);
+	return (MUNIT_OK);
+}
+
+void	ft_toupper_iter(unsigned int i, char *c)
+{
+	(void) i;
+	*c = ft_toupper(*c);
 }
 
 MunitResult	ft_striteri_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char *str = ft_strdup("Hello world! This is a str1ng that can bE UPCased.");
+
+	ft_striteri(str, &ft_toupper_iter);
+	munit_assert_string_equal(
+		str,
+		"HELLO WORLD! THIS IS A STR1NG THAT CAN BE UPCASED."
+	);
+	free(str);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_putchar_fd_test(const MunitParameter params[], void *data)
