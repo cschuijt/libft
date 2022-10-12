@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:02:09 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/11 23:59:51 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ MunitResult	ft_atoi_test(const MunitParameter params[], void *data)
 	munit_assert_int(atoi("1001   23432"), ==, ft_atoi("1001   23432"));
 	munit_assert_int(atoi(""), ==, ft_atoi(""));
 	munit_assert_int(atoi("2147483647"), ==, ft_atoi("2147483647"));
+	munit_assert_int(atoi("2147483648"), ==, ft_atoi("2147483648"));
 	munit_assert_int(atoi("-2147483648"), ==, ft_atoi("-2147483648"));
+	munit_assert_int(atoi("-2147483649"), ==, ft_atoi("-2147483649"));
 	munit_assert_int(atoi("    \n666"), ==, ft_atoi("    \n666"));
 	munit_assert_int(atoi("fjkdffd444"), ==, ft_atoi("fjkdffd444"));
 	munit_assert_int(atoi("   54.gkrrgkr"), ==, ft_atoi("   54.gkrrgkr"));
@@ -446,21 +448,24 @@ MunitResult	ft_strnstr_test(const MunitParameter params[], void *data)
 {
 	char *str = "This is a very long string with lots of fun\ny things in it. A a A\0z";
 
-	munit_assert_ptr_equal(strnstr(str, "is", 0), ft_strnstr(str, "is", 0));
-	munit_assert_ptr_equal(strnstr(str, "is", 10), ft_strnstr(str, "is", 10));
-	munit_assert_ptr_equal(strnstr(str, "is", 900), ft_strnstr(str, "is", 900));
-	munit_assert_ptr_equal(strnstr(str, "\0", 69), ft_strnstr(str, "\0", 69));
-	munit_assert_ptr_equal(strnstr(str, " ", 67), ft_strnstr(str, " ", 67));
-	munit_assert_ptr_equal(strnstr(str, "z", 68), ft_strnstr(str, "z", 68));
-	munit_assert_ptr_equal(strnstr(str, "funny", 67), ft_strnstr(str, "funny", 67));
-	munit_assert_ptr_equal(strnstr(str, "offun", 67), ft_strnstr(str, "offun", 67));
-	munit_assert_ptr_equal(strnstr(str, "of fun", 67), ft_strnstr(str, "of fun", 67));
-	munit_assert_ptr_equal(strnstr(str, "\n", 67), ft_strnstr(str, "\n", 67));
-	munit_assert_ptr_equal(strnstr(str, "a", 70), ft_strnstr(str, "a", 70));
-	munit_assert_ptr_equal(strnstr(str, "lo", 70), ft_strnstr(str, "lo", 70));
-	munit_assert_ptr_equal(strnstr(str, "lotz", 70), ft_strnstr(str, "lotz", 70));
-	munit_assert_ptr_equal(strnstr(str, ".", 30), ft_strnstr(str, ".", 30));
-	munit_assert_ptr_equal(strnstr(str, ".", 70), ft_strnstr(str, ".", 70));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "is", 0));
+	munit_assert_ptr_equal(&str[2], ft_strnstr(str, "is", 10));
+	munit_assert_ptr_equal(&str[2], ft_strnstr(str, "is", 900));
+	munit_assert_ptr_equal(&str[0], ft_strnstr(str, "\0", 69));
+	munit_assert_ptr_equal(&str[0], ft_strnstr(str, "", 69));
+	munit_assert_ptr_equal(&str[0], ft_strnstr(str, "This", 69));
+	munit_assert_ptr_equal(&str[4], ft_strnstr(str, " ", 67));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "z", 68));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "funny", 67));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "offun", 67));
+	munit_assert_ptr_equal(&str[37], ft_strnstr(str, "of fun", 67));
+	munit_assert_ptr_equal(&str[43], ft_strnstr(str, "\n", 67));
+	munit_assert_ptr_equal(&str[8], ft_strnstr(str, "a", 70));
+	munit_assert_ptr_equal(&str[15], ft_strnstr(str, "lo", 70));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "lotz", 70));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, ".", 30));
+	munit_assert_ptr_equal(&str[58], ft_strnstr(str, ".", 70));
+	munit_assert_ptr_equal(NULL, ft_strnstr(str, "long string", 20));
 	return (MUNIT_OK);
 }
 
@@ -806,7 +811,33 @@ MunitResult	ft_strtrim_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_split_test(const MunitParameter params[], void *data)
 {
-	return (MUNIT_SKIP);
+	char	**array = ft_split("   sdfsdf gerg 12345   erter", ' ');
+
+	munit_assert_string_equal(array[0], "sdfsdf");
+	munit_assert_string_equal(array[1], "gerg");
+	munit_assert_string_equal(array[2], "12345");
+	munit_assert_string_equal(array[3], "erter");
+	munit_assert_ptr_null(array[4]);
+	free(array[0]);
+	free(array[1]);
+	free(array[2]);
+	free(array[3]);
+	free(array);
+
+	array = ft_split("", ' ');
+	munit_assert_ptr_null(array[0]);
+	free(array);
+
+	array = ft_split("asdf qwerty", '0');
+	munit_assert_string_equal(array[0], "asdf qwerty");
+	munit_assert_ptr_null(array[1]);
+	free(array[1]);
+	free(array);
+
+	array = ft_split("44444444", '4');
+	munit_assert_ptr_null(array[0]);
+	free(array);
+	return (MUNIT_OK);
 }
 
 MunitResult	ft_strmapi_test(const MunitParameter params[], void *data)
