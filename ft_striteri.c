@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_striteri.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/04 16:37:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 14:45:43 by cschuijt      ########   odam.nl         */
+/*   Created: 2022/10/12 14:50:39 by cschuijt      #+#    #+#                 */
+/*   Updated: 2022/10/12 15:06:02 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+void	ft_striteri(char *s, char (*f)(unsigned int, char*))
 {
-	size_t	count;
+	unsigned int	i;
 
-	count = 0;
-	while (*s)
+	i = 0;
+	while (s[i])
 	{
-		count++;
-		s++;
+		f(i, &s[i]);
+		i++;
 	}
-	return (count);
 }
