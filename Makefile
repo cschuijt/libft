@@ -6,22 +6,20 @@ objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_split.o ft_strtrim.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o \
 					ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strjoin.o
 flags = -Werror -Wall -Wextra
-NAME = libft
+NAME = libft.a
 
 all : $(NAME)
 
-$(NAME) : $(NAME).a
-
-$(NAME).a : $(objects)
-	ar rcs $(NAME).a $(objects)
+$(NAME) : $(objects)
+	ar rcs $(NAME) $(objects)
 
 re : fclean all
 
 clean :
-	rm $(NAME).a $(objects)
+	rm $(NAME) $(objects)
 
 fclean :
-	rm -f $(NAME).a $(objects)
+	rm -f $(NAME) $(objects)
 
 test : re
 	cc munit.c test.c -L . -l ft -o test
