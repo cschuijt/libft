@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:16:37 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 16:41:41 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/13 13:15:34 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	write(fd, "\0", 1);
+	write(fd, "\n", 1);
 }
