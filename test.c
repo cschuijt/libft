@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 18:56:11 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/13 13:14:07 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,6 +412,7 @@ MunitResult	ft_strncmp_test(const MunitParameter params[], void *data)
 	munit_assert_int(ft_norm(strncmp("asdfgh", "asdf", 5)), ==, ft_norm(ft_strncmp("asdfgh", "asdf", 5)));
 	munit_assert_int(ft_norm(strncmp("asdfgh", "asdf", 3)), ==, ft_norm(ft_strncmp("asdfgh", "asdf", 3)));
 	munit_assert_int(ft_norm(strncmp("asd\0gh", "a\0dfgh", 7)), ==, ft_norm(ft_strncmp("asd\0gh", "a\0dfgh", 7)));
+	munit_assert_int(ft_norm(strncmp("asdf\0", "asdf\200", 5)), ==, ft_norm(ft_strncmp("asdf\0", "asdf\200", 5)));
 	return (MUNIT_OK);
 }
 
@@ -441,6 +442,8 @@ MunitResult	ft_memcmp_test(const MunitParameter params[], void *data)
 	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 1)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 1)));
 	munit_assert_int(ft_norm(memcmp("", "", 0)), ==, ft_norm(ft_memcmp("", "", 0)));
 	munit_assert_int(ft_norm(memcmp("AsdF", "asdf", 0)), ==, ft_norm(ft_memcmp("AsdF", "asdf", 0)));
+	munit_assert_int(ft_norm(memcmp("asd\200", "asd\0", 4)), ==, ft_norm(ft_memcmp("asd\200", "asd\0", 4)));
+	munit_assert_int(ft_norm(memcmp("asd\0", "asd\200", 4)), ==, ft_norm(ft_memcmp("asd\0", "asd\200", 4)));
 	return (MUNIT_OK);
 }
 
@@ -790,10 +793,12 @@ MunitResult	ft_substr_test(const MunitParameter params[], void *data)
 MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
 {
 	munit_assert_string_equal(ft_itoa(1), "1");
+	munit_assert_string_equal(ft_itoa(9), "9");
 	munit_assert_string_equal(ft_itoa(2147483647), "2147483647");
 	munit_assert_string_equal(ft_itoa(5000), "5000");
 	munit_assert_string_equal(ft_itoa(-44), "-44");
 	munit_assert_string_equal(ft_itoa(-6000), "-6000");
+	munit_assert_string_equal(ft_itoa(-789000), "-789000");
 	munit_assert_string_equal(ft_itoa(-2147483648), "-2147483648");
 	munit_assert_string_equal(ft_itoa(0), "0");
 	munit_assert_string_equal(ft_itoa(-1), "-1");
