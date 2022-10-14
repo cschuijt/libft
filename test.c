@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/13 13:14:07 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 11:27:20 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -794,6 +794,8 @@ MunitResult	ft_itoa_test(const MunitParameter params[], void *data)
 {
 	munit_assert_string_equal(ft_itoa(1), "1");
 	munit_assert_string_equal(ft_itoa(9), "9");
+	munit_assert_string_equal(ft_itoa(10), "10");
+	munit_assert_string_equal(ft_itoa(11), "11");
 	munit_assert_string_equal(ft_itoa(2147483647), "2147483647");
 	munit_assert_string_equal(ft_itoa(5000), "5000");
 	munit_assert_string_equal(ft_itoa(-44), "-44");
