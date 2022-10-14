@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:27:20 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 13:02:01 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ MunitResult	ft_strlen_test(const MunitParameter params[], void *data)
 
 MunitResult	ft_strchr_test(const MunitParameter params[], void *data)
 {
-	char	*str;
-	char	*emptystr;
+	char	*str, *emptystr, *str2, *str3;
 
 	str = "Hello world! This is a very long str1ng w1th funny cha\nracters.\0z";
 	emptystr = "";
+	str2 = "teste";
 	munit_assert_ptr_equal(strchr(str, 'w'), ft_strchr(str, 'w'));
 	munit_assert_ptr_equal(strchr(str, 'e'), ft_strchr(str, 'e'));
 	munit_assert_ptr_equal(strchr(str, 'H'), ft_strchr(str, 'H'));
@@ -102,6 +102,7 @@ MunitResult	ft_strchr_test(const MunitParameter params[], void *data)
 	munit_assert_ptr_equal(strchr(str, 'x'), ft_strchr(str, 'x'));
 	munit_assert_ptr_equal(strchr(str, '\n'), ft_strchr(str, '\n'));
 	munit_assert_ptr_equal(strchr(str, 'z'), ft_strchr(str, 'z'));
+	munit_assert_ptr_equal(strchr(str2, 'e'), ft_strchr(str2, 'e'));
 	munit_assert_ptr_equal(strchr(emptystr, 'z'), ft_strchr(emptystr, 'z'));
 	munit_assert_ptr_equal(strchr(emptystr, '\0'), ft_strchr(emptystr, '\0'));
 	return (MUNIT_OK);
