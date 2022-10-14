@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:18:19 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:23:00 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 13:07:01 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	write_number(int n, int fd)
 {
 	char	c;
 
-	if (n < -10)
+	if (n < -9)
 		write_number(n / 10, fd);
 	if (n < 0)
 	{

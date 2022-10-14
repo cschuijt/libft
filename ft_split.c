@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:00:11 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:53:59 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 12:22:19 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,10 @@ static char	*allocate_substring(char const *s, char c)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**fill_array(char const *s, char **array, char c)
 {
-	char	**array;
-	int		i;
+	int	i;
 
-	array = ft_calloc(sizeof(char *), (count_strings(s, c) + 1));
 	i = 0;
 	while (*s)
 	{
@@ -95,4 +93,14 @@ char	**ft_split(char const *s, char c)
 	}
 	array[i] = NULL;
 	return (array);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+
+	array = ft_calloc(sizeof(char *), (count_strings(s, c) + 1));
+	if (!array)
+		return (NULL);
+	return (fill_array(s, array, c));
 }

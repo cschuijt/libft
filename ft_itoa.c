@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 21:37:13 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:27:49 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 12:23:21 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*ft_itoa(int n)
 		n = -n;
 	chars = chars + count_digits(n);
 	str = ft_calloc(sizeof(char), chars);
+	if (!str)
+		return (NULL);
 	write_number(n, str + chars - 2);
 	if (negative == true)
 		str[0] = '-';
