@@ -6,12 +6,27 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:00:11 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 00:08:59 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 11:53:59 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
+
+void	*ft_calloc(size_t nmemb, size_t size);
+
+static void	free_everything(char **array)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
 
 static unsigned int	count_strings(char const *s, char c)
 {
@@ -59,10 +74,8 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	int		i;
 
-	array = malloc(sizeof(char *) * (count_strings(s, c) + 1));
+	array = ft_calloc(sizeof(char *), (count_strings(s, c) + 1));
 	i = 0;
-	if (!array)
-		return (NULL);
 	while (*s)
 	{
 		while (*s && *s == c)
@@ -71,7 +84,10 @@ char	**ft_split(char const *s, char c)
 		{
 			array[i] = allocate_substring(s, c);
 			if (array[i] == NULL)
+			{
+				free_everything(array);
 				return (NULL);
+			}
 			i++;
 		}
 		while (*s && *s != c)

@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 21:37:13 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:21:22 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 11:27:49 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static unsigned int	count_digits(int n)
 {
 	unsigned int	digits;
 
-	digits = 0;
-	while (n < 0)
+	digits = 1;
+	while (n < -9)
 	{
 		digits++;
 		n = n / 10;
