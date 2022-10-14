@@ -6,13 +6,11 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:18:19 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/13 13:18:39 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 11:23:00 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putnbr_fd(int n, int fd);
 
 static void	write_number(int n, int fd)
 {

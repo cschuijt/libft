@@ -6,48 +6,55 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 21:37:13 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 21:34:46 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/14 11:21:22 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdbool.h>
 
-static char	*ft_write_number(long i, char *str)
+void	*ft_calloc(size_t nmemb, size_t size);
+
+static unsigned int	count_digits(int n)
 {
-	*str = '0';
-	while (i > 0)
+	unsigned int	digits;
+
+	digits = 0;
+	while (n < 0)
 	{
-		*str = 48 + (i % 10);
-		i = i / 10;
-		str--;
+		digits++;
+		n = n / 10;
 	}
-	return (str);
+	return (digits);
+}
+
+static void	write_number(int n, char *dst)
+{
+	*dst = 48 - (n % 10);
+	n = n / 10;
+	if (n < 0)
+		write_number(n, dst - 1);
 }
 
 char	*ft_itoa(int n)
 {
-	int		negative;
-	char	*str;
-	long	i;
+	unsigned int	chars;
+	char			*str;
+	int				negative;
 
-	negative = 0;
+	negative = false;
+	chars = 1;
 	if (n < 0)
-		negative = 1;
-	if (n < 0)
-		i = (long) n * -1;
+	{
+		chars++;
+		negative = true;
+	}
 	else
-		i = n;
-	str = malloc(sizeof(char) * 12);
-	if (!str)
-		return (NULL);
-	str = str + 11;
-	*str = '\0';
-	str--;
-	str = ft_write_number(i, str);
-	if (negative == 1)
-		*str = '-';
-	if (n == 0 || negative == 1)
-		return (str);
-	else
-		return (str + 1);
+		n = -n;
+	chars = chars + count_digits(n);
+	str = ft_calloc(sizeof(char), chars);
+	write_number(n, str + chars - 2);
+	if (negative == true)
+		str[0] = '-';
+	return (str);
 }

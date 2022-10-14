@@ -138,3 +138,6 @@ ft_putendl_fd.o : ft_putendl_fd.c
 
 ft_putnbr_fd.o : ft_putnbr_fd.c
 	cc $(flags) -c ft_putnbr_fd.c
+
+ft_strtrim.o : ft_strtrim.c
+	cc $(flags) -c ft_strtrim.c
