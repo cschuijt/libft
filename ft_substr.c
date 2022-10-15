@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 13:54:42 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/12 17:22:05 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/15 21:34:18 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		s++;
 		start--;
 	}
-	if ((total_length - start) < len)
+	if ((total_length - start) < len) // This can underflow when targeting a large substr outside of s!
 		len = (total_length - start);
 	pointer = malloc(sizeof(char) * (len + 1));
 	if (pointer == NULL)
