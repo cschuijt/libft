@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/08 17:48:56 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/14 13:02:01 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/15 21:46:56 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,7 +337,7 @@ MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
 {
 	char	*str1, *str2, *str3, *str4, *str5;
 
-	str1 = "qwerty \n535tt\0dsffd";
+	str1 = "qwerty \n535tt\0dsffd"; // 13
 	str2 = calloc(sizeof(char), 30);
 	str3 = calloc(sizeof(char), 30);
 	str4 = calloc(sizeof(char), 10);
@@ -396,6 +396,15 @@ MunitResult	ft_strlcat_test(const MunitParameter params[], void *data)
 	munit_assert_memory_equal(10, str4, str5);
 	free(str2);
 	free(str3);
+	char *str6 = ft_calloc(sizeof(char), 10);
+	memset(str6, 'P', 10);
+	munit_assert_int(ft_strlcat(str6, "1234", 5), ==, 9);
+	munit_assert_int(ft_strlcat(str6, "1234", 10), ==, 14);
+	munit_assert_memory_equal(10, str6, "PPPPPPPPPP");
+	ft_bzero(str6, 10);
+	ft_strlcat(str6, "1234", 0);
+	munit_assert_string_equal(str6, "");
+	free(str6);
 	return (MUNIT_OK);
 }
 
