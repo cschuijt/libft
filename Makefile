@@ -5,6 +5,9 @@ objects = ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_calloc.o ft_strncmp.o ft_strlcat.o ft_strlcpy.o ft_strnstr.o \
 					ft_split.o ft_strtrim.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o \
 					ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strjoin.o
+bonus_objects = ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o \
+								ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o \
+								ft_lstnew.o ft_lstsize.o
 flags = -Werror -Wall -Wextra
 NAME = libft.a
 
@@ -13,13 +16,16 @@ all : $(NAME)
 $(NAME) : $(objects)
 	ar rcs $(NAME) $(objects)
 
+bonus : $(bonus_objects)
+	ar rcs $(NAME) $(bonus_objects)
+
 re : fclean all
 
 clean :
 	rm $(NAME) $(objects)
 
 fclean :
-	rm -f $(NAME) $(objects)
+	rm -f $(NAME) $(objects) $(bonus_objects)
 
 test : re
 	cc munit.c test.c -L . -l ft -o test
@@ -35,7 +41,9 @@ norm :
 	ft_strchr.c ft_strrchr.c ft_strdup.c ft_memset.c ft_bzero.c ft_memchr.c \
 	ft_memcmp.c ft_memcpy.c ft_memmove.c ft_calloc.c ft_strncmp.c ft_strlcat.c \
 	ft_strlcpy.c ft_strnstr.c ft_split.c ft_strtrim.c ft_strmapi.c ft_striteri.c \
-	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
+	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c 
 
 ft_atoi.o : ft_atoi.c
 	cc $(flags) -c ft_atoi.c
@@ -139,5 +147,29 @@ ft_putendl_fd.o : ft_putendl_fd.c
 ft_putnbr_fd.o : ft_putnbr_fd.c
 	cc $(flags) -c ft_putnbr_fd.c
 
-ft_strtrim.o : ft_strtrim.c
-	cc $(flags) -c ft_strtrim.c
+ft_lstadd_back.o : ft_lstadd_back.c
+	cc $(flags) -c ft_lstadd_back.c
+
+ft_lstadd_front.o : ft_lstadd_front.c
+	cc $(flags) -c ft_lstadd_front.c
+
+ft_lstclear.o : ft_lstclear.c
+	cc $(flags) -c ft_lstclear.c
+
+ft_lstdelone.o : ft_lstdelone.c
+	cc $(flags) -c ft_lstdelone.c
+
+ft_lstiter.o : ft_lstiter.c
+	cc $(flags) -c ft_lstiter.c
+
+ft_lstlast.o : ft_lstlast.c
+	cc $(flags) -c ft_lstlast.c
+
+ft_lstmap.o : ft_lstmap.c
+	cc $(flags) -c ft_lstmap.c
+
+ft_lstnew.o : ft_lstnew.c
+	cc $(flags) -c ft_lstnew.c
+
+ft_lstsize.o : ft_lstsize.c
+	cc $(flags) -c ft_lstsize.c
