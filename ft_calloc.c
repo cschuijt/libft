@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/09 21:07:47 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/09 21:22:01 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/17 16:55:35 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,16 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	maxsize;
 
 	maxsize = -1;
-	if (nmemb == 0 || size == 0 || (maxsize / nmemb) < size)
-		return (NULL);
-	totalsize = nmemb * size;
-	pnt = malloc(totalsize);
+	totalsize = 0;
+	if (size == 0 || nmemb == 0)
+		pnt = malloc(0);
+	else
+	{
+		if ((maxsize / size) < nmemb)
+			return (NULL);
+		totalsize = nmemb * size;
+		pnt = malloc(totalsize);
+	}
 	if (!pnt)
 		return (NULL);
 	ft_bzero(pnt, totalsize);
