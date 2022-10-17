@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 22:17:07 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/16 22:17:57 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:00:40 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while ((*lst).next)
-		lst = (*lst).next;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
 	return (lst);
 }

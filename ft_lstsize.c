@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 22:14:03 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/16 22:16:33 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:00:40 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
+	if (!lst)
+		return (0);
 	i = 1;
-	while ((*lst).next)
+	while (lst->next)
 	{
 		i++;
-		lst = (*lst).next;
+		lst = lst->next;
 	}
 	return (i);
 }

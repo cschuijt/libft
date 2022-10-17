@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 21:35:31 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/16 23:00:10 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:00:40 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*ft_lstnew(void *content)
 	link = malloc(sizeof(t_list));
 	if (!link)
 		return (NULL);
-	(*link).content = content;
-	(*link).next = NULL;
+	link->content = content;
+	link->next = NULL;
 	return (link);
 }

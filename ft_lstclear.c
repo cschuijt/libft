@@ -6,7 +6,7 @@
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 22:43:14 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/10/16 22:52:10 by cschuijt      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:00:40 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	ft_lst_recursive_remove(t_list *lst, void (*del)(void*))
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	ft_lst_recursive_remove(*lst, del);
+	if (*lst)
+		ft_lst_recursive_remove(*lst, del);
 	*lst = NULL;
 }
